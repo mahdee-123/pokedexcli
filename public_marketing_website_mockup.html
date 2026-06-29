@@ -1,0 +1,524 @@
+<style>
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-primary);
+  }
+  .logo {
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+  .logo span {
+    color: #534ab7;
+  }
+  .nav-links {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+  }
+  .nav-links a {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+  .nav-btn {
+    font-size: 13px;
+    padding: 6px 14px;
+    border-radius: var(--border-radius-md);
+    border: 0.5px solid var(--color-border-secondary);
+    background: var(--color-background-primary);
+    color: var(--color-text-primary);
+    cursor: pointer;
+  }
+  .nav-btn.primary {
+    background: #534ab7;
+    color: #eeedfe;
+    border-color: #534ab7;
+  }
+  .hero {
+    padding: 40px 20px 32px;
+    text-align: center;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 20px;
+    background: #eeedfe;
+    color: #3c3489;
+    border: 0.5px solid #afa9ec;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    margin-bottom: 12px;
+  }
+  .hero h1 span {
+    color: #534ab7;
+  }
+  .hero p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .hero-btns {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .btn-primary {
+    padding: 10px 20px;
+    border-radius: var(--border-radius-md);
+    background: #534ab7;
+    color: #eeedfe;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .btn-outline {
+    padding: 10px 20px;
+    border-radius: var(--border-radius-md);
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 0.5px solid var(--color-border-secondary);
+    font-size: 14px;
+    cursor: pointer;
+  }
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: var(--color-border-tertiary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .stat {
+    padding: 16px 12px;
+    text-align: center;
+    background: var(--color-background-primary);
+  }
+  .stat-n {
+    font-size: 20px;
+    font-weight: 500;
+    color: #534ab7;
+  }
+  .stat-l {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    margin-top: 2px;
+  }
+  .section {
+    padding: 28px 20px;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+  .section-label {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .section-title {
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 6px;
+  }
+  .section-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    margin-bottom: 20px;
+  }
+  .vertical-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .v-card {
+    padding: 14px;
+    border-radius: var(--border-radius-lg);
+    border: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-primary);
+  }
+  .v-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  .v-card h3 {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+  .v-card p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+  .p-card {
+    padding: 16px;
+    border-radius: var(--border-radius-lg);
+    border: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-primary);
+  }
+  .p-card.featured {
+    border: 1.5px solid #534ab7;
+  }
+  .p-badge {
+    display: inline-block;
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 20px;
+    background: #eeedfe;
+    color: #3c3489;
+    margin-bottom: 10px;
+  }
+  .p-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+  .p-price {
+    font-size: 22px;
+    font-weight: 500;
+    color: #534ab7;
+  }
+  .p-price span {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--color-text-secondary);
+  }
+  .p-fee {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    margin-top: 4px;
+    margin-bottom: 12px;
+  }
+  .p-features {
+    list-style: none;
+  }
+  .p-features li {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    padding: 4px 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    border-top: 0.5px solid var(--color-border-tertiary);
+  }
+  .p-features li:first-child {
+    border-top: none;
+  }
+  .p-features li i {
+    color: #1d9e75;
+    font-size: 13px;
+  }
+  .theme-row {
+    display: flex;
+    gap: 10px;
+    overflow: hidden;
+  }
+  .theme-card {
+    flex: 0 0 140px;
+    border-radius: var(--border-radius-lg);
+    border: 0.5px solid var(--color-border-tertiary);
+    overflow: hidden;
+  }
+  .theme-preview {
+    height: 80px;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+  }
+  .theme-bar {
+    height: 4px;
+    border-radius: 2px;
+    margin-bottom: 6px;
+    width: 60%;
+  }
+  .theme-block {
+    height: 6px;
+    border-radius: 2px;
+    margin-bottom: 4px;
+  }
+  .theme-block.short {
+    width: 40%;
+  }
+  .theme-block.long {
+    width: 80%;
+  }
+  .theme-info {
+    padding: 8px 10px;
+    border-top: 0.5px solid var(--color-border-tertiary);
+  }
+  .theme-info p {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+  .theme-info span {
+    font-size: 10px;
+    color: var(--color-text-secondary);
+  }
+  .cta-section {
+    padding: 32px 20px;
+    text-align: center;
+  }
+  .cta-section h2 {
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+  }
+  .cta-section p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 20px;
+  }
+  .footer {
+    padding: 16px 20px;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+  .footer-links {
+    display: flex;
+    gap: 12px;
+  }
+  .footer-links a {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+  }
+</style>
+
+<nav class="nav">
+  <div class="logo">bazar<span>ly</span></div>
+  <div class="nav-links">
+    <a href="#">Features</a>
+    <a href="#">Pricing</a>
+    <a href="#">Themes</a>
+    <button
+      class="nav-btn primary"
+      onclick="sendPrompt('Seller dashboard mockup ta dekhao')"
+    >
+      Start free
+    </button>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="badge">
+    <i class="ti ti-bolt" aria-hidden="true"></i> Multi-vertical ecommerce SaaS
+  </div>
+  <h1>Tomar business er jonno<br /><span>perfect store</span>, ekhuni</h1>
+  <p>
+    POD, restaurant, grocery ba tech — jebhabe bikri koro na keno, ekta platform
+    e shob manage koro
+  </p>
+  <div class="hero-btns">
+    <button
+      class="btn-primary"
+      onclick="sendPrompt('Seller dashboard er full mockup dekhao')"
+    >
+      14 din free trial <i class="ti ti-arrow-right" aria-hidden="true"></i>
+    </button>
+    <button class="btn-outline">Live demo dekhun</button>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat">
+    <div class="stat-n">300k+</div>
+    <div class="stat-l">F-commerce seller</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n">4</div>
+    <div class="stat-l">Vertical type</div>
+  </div>
+  <div class="stat">
+    <div class="stat-n">৳500</div>
+    <div class="stat-l">Theke shuru</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Verticals</div>
+  <div class="section-title">Jebhabe bikri koro, amra ready</div>
+  <div class="section-sub">
+    Ekta platform, char dhara ber business — shobari jonno alag feature
+  </div>
+  <div class="vertical-grid">
+    <div class="v-card">
+      <div class="v-icon" style="background: #eeedfe">
+        <i class="ti ti-shirt" style="color: #534ab7" aria-hidden="true"></i>
+      </div>
+      <h3>Print-on-demand</h3>
+      <p>Design upload, mockup preview, DPI check</p>
+    </div>
+    <div class="v-card">
+      <div class="v-icon" style="background: #e1f5ee">
+        <i
+          class="ti ti-tools-kitchen-2"
+          style="color: #0f6e56"
+          aria-hidden="true"
+        ></i>
+      </div>
+      <h3>Restaurant</h3>
+      <p>Live menu, kitchen display, delivery track</p>
+    </div>
+    <div class="v-card">
+      <div class="v-icon" style="background: #faeeda">
+        <i class="ti ti-leaf" style="color: #854f0b" aria-hidden="true"></i>
+      </div>
+      <h3>Grocery</h3>
+      <p>Weight-based price, stock expiry, subscription box</p>
+    </div>
+    <div class="v-card">
+      <div class="v-icon" style="background: #e6f1fb">
+        <i class="ti ti-cpu" style="color: #185fa5" aria-hidden="true"></i>
+      </div>
+      <h3>Tech products</h3>
+      <p>Variant matrix, EMI option, warranty track</p>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Themes</div>
+  <div class="section-title">Developer-made premium themes</div>
+  <div class="section-sub">
+    Marketplace theke theme kino, nijei customize koro
+  </div>
+  <div class="theme-row">
+    <div class="theme-card">
+      <div class="theme-preview" style="background: #0a0a0a">
+        <div class="theme-bar" style="background: #534ab7"></div>
+        <div class="theme-block long" style="background: #222"></div>
+        <div class="theme-block short" style="background: #534ab7"></div>
+      </div>
+      <div class="theme-info">
+        <p>Noir</p>
+        <span>৳2,500</span>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="theme-preview" style="background: #fff8f0">
+        <div class="theme-bar" style="background: #d85a30"></div>
+        <div class="theme-block long" style="background: #f0997b"></div>
+        <div class="theme-block short" style="background: #d85a30"></div>
+      </div>
+      <div class="theme-info">
+        <p>Spice</p>
+        <span>৳1,800</span>
+      </div>
+    </div>
+    <div class="theme-card">
+      <div class="theme-preview" style="background: #f0fff8">
+        <div class="theme-bar" style="background: #1d9e75"></div>
+        <div class="theme-block long" style="background: #9fe1cb"></div>
+        <div class="theme-block short" style="background: #1d9e75"></div>
+      </div>
+      <div class="theme-info">
+        <p>Fresh</p>
+        <span>Free</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-label">Pricing</div>
+  <div class="section-title">Shob size er business er jonno</div>
+  <div class="section-sub">
+    Subscription + chhoto transaction fee — grow korar shathe income barbe
+  </div>
+  <div class="pricing-grid">
+    <div class="p-card">
+      <div class="p-name">Starter</div>
+      <div class="p-price">৳500<span>/mash</span></div>
+      <div class="p-fee">+ 3% per order</div>
+      <ul class="p-features">
+        <li><i class="ti ti-check" aria-hidden="true"></i>1 store</li>
+        <li>
+          <i class="ti ti-check" aria-hidden="true"></i>Unlimited products
+        </li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Basic analytics</li>
+      </ul>
+    </div>
+    <div class="p-card featured">
+      <div class="p-badge">Most popular</div>
+      <div class="p-name">Growth</div>
+      <div class="p-price">৳2,000<span>/mash</span></div>
+      <div class="p-fee">+ 2% per order</div>
+      <ul class="p-features">
+        <li><i class="ti ti-check" aria-hidden="true"></i>3 stores</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Custom domain</li>
+        <li><i class="ti ti-check" aria-hidden="true"></i>Theme marketplace</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="cta-section">
+  <h2>Shuru korte ready?</h2>
+  <p>14 din free trial — card lagbe na</p>
+  <button
+    class="btn-primary"
+    onclick="
+      sendPrompt(
+        'Admin panel er full mockup dekhao subscription management diye',
+      )
+    "
+  >
+    Ekhuni shuru koro <i class="ti ti-arrow-right" aria-hidden="true"></i>
+  </button>
+</div>
+
+<footer class="footer">
+  <p>© 2025 Bazarly</p>
+  <div class="footer-links">
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#">Support</a>
+  </div>
+</footer>
